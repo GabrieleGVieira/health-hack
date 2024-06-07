@@ -14,8 +14,14 @@ async function createUser(userData) {
     ) {
       throw errorEnum.emptyField;
     }
-      
+
     // Validar se o usuario ja existe
+
+    const hasUser = userRepository.findByEmail(userData.email);
+
+    if (hasUser) {
+      throw errorEnum.userAlreadyExists;
+    }
 
     // validação se tem caracters inválidos
 
@@ -35,11 +41,11 @@ async function createUser(userData) {
     if (hasInvalidCharactersDepartment) {
       throw errorEnum.invalidDepartment;
     }
-      
-      // Transformando password em hash 
 
-      const hashedPassword = await bcrypt.hash(userData.password, 10);
-      userData.password = hashedPassword
+    // Transformando password em hash
+
+    const hashedPassword = await bcrypt.hash(userData.password, 10);
+    userData.password = hashedPassword;
 
     userRepository.create(userData);
 
