@@ -12,10 +12,9 @@ async function create(userData) {
   return await newUser.save();
 }
 
-async function findByEmail(email) {
-  return await User.findOne({email});
+async function findByEmail(userEmail) {
+  return await User.findOne({ email: userEmail });
 }
-
 
 export default {
   create,
