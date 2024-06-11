@@ -1,13 +1,13 @@
-import { Schema as _Schema } from "mongoose";
+import { Schema as _Schema, model } from "mongoose";
 const Schema = _Schema;
 
 const messageSchema = new Schema({
-  sender: { type: Schema.Types.ObjectId, ref: "User" },
-  receiver: { type: Schema.Types.ObjectId, ref: "User" },
+  sender: String,
+  receiver: String,
   content: String,
   timestamp: { type: Date, default: Date.now },
 });
 
-const Message = mongoose.model("Message", messageSchema);
+const Message = model("Message", messageSchema);
 
 export default Message;

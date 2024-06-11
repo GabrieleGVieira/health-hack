@@ -6,7 +6,8 @@ const errorEnum = {
   unknowError: "UNKNOW_ERROR",
   userAlreadyExists: "USER_ALREADY_EXISTS",
   invalidUser: "INVALID_USER",
-  invalidPassword: "INVALID_PASSWORD"
+  invalidPassword: "INVALID_PASSWORD",
+  sameUser: "SAME_USER",
 };
 
 export default errorEnum;
